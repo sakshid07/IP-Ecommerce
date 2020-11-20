@@ -1,36 +1,48 @@
 <?php 
 require('connection.php');
 ?>
-<!doctype html>  
-<html>  
-<head>  
-<title>Login</title>  
-<style>
-    body{
-        text-align:center;
+<!doctype html>
+<html>
+
+<head>
+    <title>Login</title>
+    <style>
+    body {
+        text-align: center;
     }
-    fieldset{
+
+    /* fieldset{
         margin:auto;
         width:200px;
         height: 200px;
+    } */
+    #infield {
+        border-radius: 25px;
+        border: 1px solid grey;
+        padding: 7px;
+        width: 300px;
+        height: 30px;
     }
-    
     </style>
-</head>  
-<body>  
-     <h1>LOGIN</h1> 
-   <p><a href="register.php">Register</a> | <a href="login.php">Login</a></p>  
+</head>
 
-<form action="" method="POST"> 
-<legend>  
-    <fieldset>   <br><br>
-Email: <input type="email" name="email"><br />  <br>
-Password: <input type="password" name="pass"><br /><br>   
-<input type="submit" value="Login" name="submit" /> 
-</fieldset>  
-        </legend>   
-</form>  
-<?php  
+<body>
+    <h2 style="margin-top:140px">LOGIN</h2>
+    <!-- <p><a href="register.php">Register</a> | <a href="login.php">Login</a></p>   -->
+
+    <form action="" method="POST">
+        <legend>
+            <input type="text" name="email" placeholder="Email" id="infield"><br><br>
+
+            <input type="text" name="pass" placeholder="Password" id="infield"><br><br>
+
+
+            <input type="submit" value="Login" name="submit" id="infield"
+                style="height:49px;width:320px;background-color:#d81b60;border:none;color:white" /> <br><br>
+            <a href="register.php">Not a member? Register</a> <br><br>
+        </legend>
+    </form>
+    <?php  
 if(isset($_POST["submit"])){  
   
 if(!empty($_POST['email']) && !empty($_POST['pass'])) {  
@@ -53,7 +65,8 @@ if(!empty($_POST['email']) && !empty($_POST['pass'])) {
     if($email == $dbusername && $pass == $dbpassword)  
     {  
     session_start();  
-    $_SESSION['email']=$email;  
+    $_SESSION['email']=$email; 
+     
     echo " Logged in!";
     echo "$email"; 
     /* Redirect browser */  
@@ -67,6 +80,7 @@ if(!empty($_POST['email']) && !empty($_POST['pass'])) {
     echo "All fields are required!";  
 }  
 }  
-?>  
-</body>  
-</html>   
+?>
+</body>
+
+</html>
